@@ -14,11 +14,16 @@ public class ProductoLabel extends GridPane{
 	
 	@FXML
 	protected Label nombreProductoLabel;
+	
 	@FXML
 	protected Label stockProductoLabel;
+	
 	@FXML
 	private ImageView imagenProductoImageView;
-
+	
+	/**
+	 * Carga el elemento productoLabel
+	 */
 	public ProductoLabel() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/dein/productolabelwidget/fxml/ProductoLabel.fxml"));
 		fxmlLoader.setRoot(this);
@@ -29,7 +34,11 @@ public class ProductoLabel extends GridPane{
 			throw new RuntimeException(exception);
 		}
 	}
-
+	
+	/**
+	 * Cambio del stock haciendo que se cambie el color del fondo
+	 * @param cantidad del stock
+	 */
 	public void setStock(double cantidad) {
 		String style;
 		if (cantidad > 100) {
