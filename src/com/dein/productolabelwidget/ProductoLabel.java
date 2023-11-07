@@ -1,26 +1,35 @@
 package com.dein.productolabelwidget;
 	
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import java.io.IOException;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 
-public class ProductoLabel extends Application {
-	@Override
-	public void start(Stage primaryStage) {
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+
+public class ProductoLabel extends GridPane{
+	
+	@FXML
+	protected Label nombreProductoLabel;
+	@FXML
+	protected Label stockProductoLabel;
+	@FXML
+	private ImageView imagenProductoImageView;
+
+	public ProductoLabel() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/dein/productolabelwidget/fxml/ProductoLabel.fxml"));
+		fxmlLoader.setRoot(this);
+		fxmlLoader.setController(this);
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
+			fxmlLoader.load();
+		} catch (IOException exception) {
+			throw new RuntimeException(exception);
 		}
 	}
+
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
+
+	
 }
